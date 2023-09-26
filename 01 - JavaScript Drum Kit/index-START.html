@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>JS Drum Kit</title>
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="https://fav.farm/😀" />
 </head>
+
 <body>
 
 
@@ -58,26 +60,32 @@
   <audio data-key="75" src="sounds/tom.wav"></audio>
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
-<script>
-function playSound(e) {
-const audio = document.querySelector(`audio[data-key="${e.keycode}"]`);
-const key = document.querySelector(`key[data-key="${e.keycode}"]`);
-if (!audio) retuen;
-audio.currentTime = 0;
-audio.play();
-key.classList.add('playing');
-}
-function removeTransition(e) {
-  if (e.propertyName !== 'transform') return;
-  this.classList.remove('playting')
-}
+  <script>
+    function removeTransition(e) {
+      if (e.propertyName !== 'transform') return;
+      e.target.classList.remove('playing');
+    }
 
-const key = document.querySelectorAll('.key');
-keys.forEach(key => key.addEventListener('transitioned', removeTransition));
-window.addEventListener('keydown',playSound);
+    function playSound(e) {
+      const audio = document.querySelector(`audio[data-key="${e.keycode}"]`);
+      const key = document.querySelector(`key[data-key="${e.keycode}"]`);
+      if (!audio) retuen;
+      audio.currentTime = 0;
+      audio.play();
+      key.classList.add('playing');
+    }
+    function removeTransition(e) {
+      if (e.propertyName !== 'transform') return;
+      this.classList.remove('playting')
+    }
 
-</script>
+    const key = document.querySelectorAll('.key');
+    keys.forEach(key => key.addEventListener('transitioned', removeTransition));
+    window.addEventListener('keydown', playSound);
+
+  </script>
 
 
 </body>
+
 </html>
