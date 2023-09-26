@@ -67,19 +67,18 @@
     }
 
     function playSound(e) {
-      const audio = document.querySelector(`audio[data-key="${e.keycode}"]`);
-      const key = document.querySelector(`key[data-key="${e.keycode}"]`);
+      const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+      const key = document.querySelector(`div[data-key="${e.keyCode}"]`);
       if (!audio) retuen;
-      audio.currentTime = 0;
-      audio.play();
+
       key.classList.add('playing');
-    }
-    function removeTransition(e) {
-      if (e.propertyName !== 'transform') return;
-      this.classList.remove('playting')
+      audio.currentTime = 0;
+
+
+      audio.play();
     }
 
-    const key = document.querySelectorAll('.key');
+    const keys = Array.form(document.querySelectorAll('.key'));
     keys.forEach(key => key.addEventListener('transitioned', removeTransition));
     window.addEventListener('keydown', playSound);
 
